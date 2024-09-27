@@ -18,19 +18,19 @@
         .container {
             background-color: white;
             border-radius: 10px;
-            box-shadow: 0 10px 25px violet;
+            box-shadow: 0 10px 25px rgb(235, 116, 235);
             padding: 20px;
             width: 350px;
             text-align: center;
         }
         h1{
-            color: lightseagreen;
+            color: rgba(137, 43, 226, 0.87);
             font-size: 24px;
             margin-bottom: 20px;
         }
         button{
             padding: 8px 15px;
-            background-color: blueviolet;
+            background-color: rgba(102, 6, 192, 0.87);
             color :white;
             border: none;
             border-radius: 15px;
@@ -39,10 +39,28 @@
             margin-bottom: 10px;
             
         }
+        button:hover{
+            background-color: rgba(124, 22, 219, 0.87);
+        }
+
         #taskInput{
             width: 75%;
             padding: 10px;
-            
+            border: 2px solid white;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            transition: border 0.3s;
+            outline: none;
+        }
+        #taskInput:focus{
+            box-shadow: 0 2px 15px rgb(138, 52, 138);
+        }
+        ul{
+            max-height: 200px;
+            /*limit the height of the task list*/
+            overflow-y: auto;
+            /*enable vertial scrolling*/
+            margin-bottom: 10px;
         }
         li {
             display: flex;
@@ -57,7 +75,7 @@
         }
         /* remove button styling*/
         .remove-btn{
-            background-color: darkslateblue;
+            background-color: rgba(102, 6, 192, 0.87);
             border: none;
             padding: 8px 15px;
             color: white;
