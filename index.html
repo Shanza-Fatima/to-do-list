@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+    <style>
+        body{
+            font-family: 'Arial', sans-serif;
+            background-color: aliceblue;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px violet;
+            padding: 20px;
+            width: 350px;
+            text-align: center;
+        }
+        h1{
+            color: lightseagreen;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        button{
+            padding: 10px 20px;
+            
+        }
+        #taskInput{
+            width: 75%;
+            padding: 10px;
+        }
+        li {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+        /*completed tasks*/
+        .completed {
+            text-decoration: line-through crimson;
+            color: grey;
+        }
+        /* remove button styling*/
+        .remove-btn{
+            background-color: darkslateblue;
+            border: none;
+            padding: 8px 15px;
+            color: white;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+        .remove-btn:hover{
+            background-color: rgb(94, 115, 230);
+            box-shadow: 3px 3px 5px lightskyblue;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="color: black;" >The DOM: Adding Nodes</h1>
+    <div class="container">
+        <h1>TO-do list</h1>
+        <input type="text" id="taskInput" placeholder="Enter the task">
+        <button onclick="addTask()">Add Task</button>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            var taskInput = document.getElementById('taskInput');
+            var taskList = document.getElementById('taskList');
+
+            // handle empty task // trim function avoid the spaces
+            if(!taskInput.value.trim()) {
+                return alert('Todo cant be empty')
+
+            }
+            //Create a new list item
+            var li = document.createElement('li')
+            li.textContent = taskInput.value;
+
+            //Create a remove button
+            var removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.className = 'remove-btn';
+            removeButton.onclick = function(){
+                taskList.removeChild(li);
+            };
+           
+            // Add click event to mark as completed
+            li.onclick = function() {
+                li.classList.toggle('completed');
+            }
+            // Append the list item to the task list
+            li.appendChild(removeButton);
+
+            //Append the list item to the task item
+            taskList.appendChild(li);
+
+            //Clear the input field
+            taskInput.value = '';
+        }
+    </script>
+</body>
+</html>
