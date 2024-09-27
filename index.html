@@ -56,17 +56,27 @@
             box-shadow: 0 2px 15px rgb(138, 52, 138);
         }
         ul{
+            list-style-type: none;
+            padding: 0;
             max-height: 200px;
             /*limit the height of the task list*/
             overflow-y: auto;
             /*enable vertial scrolling*/
-            margin-bottom: 10px;
+            margin-bottom: 10px  ;
         }
         li {
+            background-color: aliceblue;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
             display: flex;
             justify-content: space-around;
             align-items: center;
             transition: background-color 0.3s;
+        }
+        li:hover{
+            background-color: antiquewhite;
         }
         /*completed tasks*/
         .completed {
@@ -82,6 +92,7 @@
             border-radius: 15px;
             cursor: pointer;
             font-size: 12px;
+            margin-top: 4px;
         }
         .remove-btn:hover{
             background-color: rgb(94, 115, 230);
@@ -109,19 +120,19 @@
 
             }
             //Create a new list item
-            var li = document.createElement('li')
+            var li = document.createElement('li');
             li.textContent = taskInput.value;
 
             //Create a remove button
             var removeButton = document.createElement('button');
             removeButton.textContent = 'Remove';
             removeButton.className = 'remove-btn';
-            removeButton.onclick = function(){
+            removeButton.onclick = function () {
                 taskList.removeChild(li);
             };
            
             // Add click event to mark as completed
-            li.onclick = function() {
+            li.onclick = function () {
                 li.classList.toggle('completed');
             }
             // Append the list item to the task list
